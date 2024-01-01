@@ -1,0 +1,53 @@
+type Todo {
+  id: ID!
+  userId: String!
+  completed: Boolean!
+  createdAt: DateTime!
+  updateAt: DateTime!
+  user: User!
+}
+
+type Query {
+  todos: [Todo!]!
+}
+
+type Mutation {
+  addTodo(title: String!): Todo!
+  updateTodo(todoId: String!, completed: Boolean, title: String): Todo!
+  deletedTodo(todoId: String!): Todo!
+}
+
+fragment TodoFragment on Todo {
+  id
+  title
+  completed
+  createdAt
+  updateAt
+  user {
+    ...UserFragment
+  }
+}
+
+query Todos {
+  todos {
+    ...TodoFragment
+  }
+}
+
+mutation AddTodo($title: String!) {
+  addTodo(title: $title) {
+    ...TodoFragment
+  }
+}
+
+mutation updateTodo($todoId: String!, $completed: Boolean, $title: String) {
+  updateTodo(todoId: $todoId, completed: $completed, title: $title) {
+    ...TodoFragment
+  }
+}
+
+mutation deleteTodo($title: String!) {
+  deleteTodo(title: $title) {
+    ...TodoFragment
+  }
+}

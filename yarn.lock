@@ -5686,6 +5686,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"micro-cors@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "micro-cors@npm:0.1.1"
+  checksum: 630b07482705bc19b680855f3b3f785eb0eb7f3f81fd9dee8c890031ca0eb4eace64c7634e58cb93ea7b111ff78e69ab26c35f2d2fa5281b2279c2febb3747d1
+  languageName: node
+  linkType: hard
+
 "micro@npm:^10.0.1":
   version: 10.0.1
   resolution: "micro@npm:10.0.1"
@@ -6022,6 +6029,7 @@ __metadata:
     eslint-plugin-simple-import-sort: "npm:^10.0.0"
     graphql: "npm:^16.8.1"
     micro: "npm:^10.0.1"
+    micro-cors: "npm:^0.1.1"
     next: "npm:14.0.4"
     next-auth: "npm:^4.24.5"
     nodemailer: "npm:^6.9.7"
