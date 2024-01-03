@@ -33,8 +33,8 @@ export const resolvers: Resolvers = {
       }
 
       const targetTodo = await prisma.todo.findUnique({ where: { id: todoId } })
-      if (targetTodo.userid !== currentUser.id) {
-        throw new Error(`Invalid user`)
+      if (targetTodo.userId !== currentUser.id) {
+        throw new Error('Invalid user')
       }
 
       const todo = await prisma.todo.update({
@@ -48,12 +48,12 @@ export const resolvers: Resolvers = {
 
       return todo
     },
-    deletedTodo: async (_, { todoId }, { prisma, currentUser }) => {
+    deleteTodo: async (_, { todoId }, { prisma, currentUser }) => {
       if (!currentUser) {
         throw new Error('User not logged in.')
       }
       const targetTodo = await prisma.todo.findUnique({ where: { id: todoId } })
-      if (targetTodo.userid !== currentUser.id) {
+      if (targetTodo.userId !== currentUser.id) {
         throw new Error(`Invalid user`)
       }
 

@@ -1,9 +1,10 @@
 type Todo {
   id: ID!
   userId: String!
+  title: String!
   completed: Boolean!
   createdAt: DateTime!
-  updateAt: DateTime!
+  updatedAt: DateTime!
   user: User!
 }
 
@@ -14,7 +15,7 @@ type Query {
 type Mutation {
   addTodo(title: String!): Todo!
   updateTodo(todoId: String!, completed: Boolean, title: String): Todo!
-  deletedTodo(todoId: String!): Todo!
+  deleteTodo(todoId: String!): Todo!
 }
 
 fragment TodoFragment on Todo {
@@ -22,7 +23,7 @@ fragment TodoFragment on Todo {
   title
   completed
   createdAt
-  updateAt
+  updatedAt
   user {
     ...UserFragment
   }
@@ -40,14 +41,14 @@ mutation AddTodo($title: String!) {
   }
 }
 
-mutation updateTodo($todoId: String!, $completed: Boolean, $title: String) {
+mutation UpdateTodo($todoId: String!, $completed: Boolean, $title: String) {
   updateTodo(todoId: $todoId, completed: $completed, title: $title) {
     ...TodoFragment
   }
 }
 
-mutation deleteTodo($title: String!) {
-  deleteTodo(title: $title) {
+mutation DeleteTodo($todoId: String!) {
+  deleteTodo(todoId: $todoId) {
     ...TodoFragment
   }
 }
